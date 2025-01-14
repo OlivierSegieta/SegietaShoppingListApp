@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SegietaShoppingListApp.Views.ProductView"
+             xmlns:viewModels="clr-namespace:SegietaShoppingListApp.ViewModels"
+>
+
+    <ContentView.Content>
+        <Frame BorderColor="#E0E0E0" CornerRadius="5" Margin="0, 10, 0, 10" WidthRequest="1000">
+            <Frame.Triggers>
+                <DataTrigger TargetType="Frame" Binding="{Binding IsChecked}" Value="True">
+                    <Setter Property="BorderColor" Value="#4CAF50" />
+                    <Setter Property="BackgroundColor" Value="#303030" />
+                </DataTrigger>
+                <DataTrigger TargetType="Frame" Binding="{Binding IsChecked}" Value="False">
+                    <Setter Property="BorderColor" Value="#E0E0E0" />
+                    <Setter Property="BackgroundColor" Value="#202020" />
+                </DataTrigger>
+            </Frame.Triggers>
+            <HorizontalStackLayout Spacing="40" Padding="50, 0 ,0 ,0">
+                <Label Text="{Binding Name}" 
+                       FontSize="20" 
+                       VerticalOptions="Center"
+                       WidthRequest="100"
+                       TextColor="White"/>
+                <HorizontalStackLayout Spacing="15" VerticalOptions="Center">
+                    <Button Text="-" 
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:MainPageViewModel}}
+, Path=DecreaseQuantityCommand}" 
+                            CommandParameter="{Binding}" 
+                            BackgroundColor="#FFC107" 
+                            TextColor="White"
+                            WidthRequest="40" 
+                            HeightRequest="40" 
+                            CornerRadius="20"/>
+                    <Label Text="{Binding Quantity}" 
+                           FontSize="16" 
+                           WidthRequest="50" 
+                           HorizontalTextAlignment="Center"
+                           VerticalOptions="Center"/>
+                    <Button Text="+" 
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:MainPageViewModel}}, Path=IncreaseQuantityCommand}" 
+                            CommandParameter="{Binding}" 
+                            BackgroundColor="#4CAF50" 
+                            TextColor="White"
+                            WidthRequest="40" 
+                            HeightRequest="40" 
+                            CornerRadius="20"/>
+                </HorizontalStackLayout>
+                <Label Text="{Binding Unit}" 
+                       FontSize="14" 
+                       VerticalOptions="Center" 
+                       WidthRequest="30"
+                       TextColor="White"/>
+                <Label Text="{Binding CategoryName}" 
+                       FontSize="14" 
+                       VerticalOptions="Center" 
+                       WidthRequest="100"
+                       TextColor="White"/>
+                <CheckBox IsChecked="{Binding IsChecked}" />
+                <Button Text="Delete" 
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:MainPageViewModel}}, Path=DeleteProductCommand}" 
+                        CommandParameter="{Binding}" 
+                        BackgroundColor="#F44336" 
+                        TextColor="White" 
+                        CornerRadius="10"
+                        HeightRequest="40"/>
+            </HorizontalStackLayout>
+        </Frame>
+    </ContentView.Content>
+</ContentView>
