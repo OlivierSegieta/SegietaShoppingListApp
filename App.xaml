@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:SegietaShoppingListApp.Converters"
+             xmlns:local="clr-namespace:SegietaShoppingListApp.Views"
+             x:Class="SegietaShoppingListApp.App">
+    <Application.MainPage>
+        <local:MainPage />
+    </Application.MainPage>
+    <Application.Resources>
+        <ResourceDictionary>
+            <converters:BoolToTextDecorationConverter x:Key="BoolToTextDecorationConverter" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
